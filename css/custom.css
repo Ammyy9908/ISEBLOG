@@ -1,0 +1,13 @@
+#social
+{
+      list-style-type: none;
+}
+
+#social li 
+{
+      display: inline;
+}
+#social li a{
+      color: #ffffff;
+      margin: 10px 15px;
+}
