@@ -1,6 +1,6 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
+    <a class="navbar-item" href="index.php">
       <img src="./assets/logo.svg" width="112" height="28">
     </a>
 
@@ -17,22 +17,52 @@
         Home
       </a>
 
-      <a class="navbar-item">
+      <a class="navbar-item" href="Blog/">
         Blogs
+      </a>
+      <a class="navbar-item" href="blogs/">
+                  Geek Post
       </a>
       <a class="navbar-item">
         Contact
       </a>
     </div>
-
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a class="button" style="background-color: #6C63FF;color:#ffffff;">
-            <strong>Add Blog</strong>
+<?php
+    if(!isset($_SESSION['member']))
+{
+   echo '<div class="navbar-end">
+   <div class="navbar-item">
+     <div class="buttons">
+       <a class="button" style="background-color: #6C63FF;color:#ffffff;border:none;" href="Auth/">
+         <strong>Member Login</strong>
 </a>
-        </div>
-      </div>
-    </div>
+     </div>
+   </div>
+ </div>';
+}?>
+
+<?php
+    if(isset($_SESSION['member']))
+{
+   echo '<div class="navbar-end">
+   <div class="navbar-item">
+     <div class="buttons">
+       
+
+<a class="button" style="background-color: #6C63FF;color:#ffffff;border:none;" href="Blog/Add.php">
+         <strong>';echo $_SESSION['member'];echo'</strong>
+</a>
+<a class="button is-light" href="Auth/logout.php">
+            Logout
+          </a>
+     </div>
+   </div>
+ </div>';
+}
+
+
+?>
+
+    
   </div>
 </nav>
