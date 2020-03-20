@@ -12,7 +12,7 @@ ob_start();
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Blogs</title>
       <link rel="stylesheet" href="../css/bulma.min.css">
-      <link rel="stylesheet" href="../css/custom.css">
+      <link rel="stylesheet" href="../css/custom.css" id="styles">
       <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 <body>
@@ -116,6 +116,8 @@ ob_start();
           <p class="subtitle"> posted by';echo $row['uname'];echo'</p>
           Total Reads: ';echo $row['seen_count'];echo'
           <p class="subtitle">';echo $row['dates'];echo'</p>
+          <!-- Go to www.addthis.com/dashboard to customize your tools -->
+         <div class="addthis_inline_share_toolbox"></div>
           <a href="posts/?id=';echo $row['id'];echo'" class="button is-primary is-rounded">Read Article</a>
           </div>
           
@@ -131,5 +133,63 @@ ob_start();
             </div>
       </div>
 </div>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-588e9cccbbeee2c6"></script>
+<script>
+      document.addEventListener('DOMContentLoaded', () => {
+
+// Get all "navbar-burger" elements
+const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+// Check if there are any navbar burgers
+if ($navbarBurgers.length > 0) {
+
+  // Add a click event on each of them
+  $navbarBurgers.forEach( el => {
+    el.addEventListener('click', () => {
+
+      // Get the target from the "data-target" attribute
+      const target = el.dataset.target;
+      const $target = document.getElementById(target);
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      el.classList.toggle('is-active');
+      $target.classList.toggle('is-active');
+
+    });
+  });
+}
+
+});
+
+
+
+
+</script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script>
+      $(document).ready(function()
+      {
+//check theme onload
+var theme=localStorage.getItem('theme');
+                  if(theme==null || theme=='' || theme=='light')
+                  {
+                        $('#styles').attr('href','../css/custom.css'); 
+                        
+            
+                  }
+                  else
+                  {
+                        $('#styles').attr('href','../css/custom2.css');
+                        $('#theme').css('background-color','#ffffff');   
+                        $('#theme').css('color','#000000'); 
+                        $('#theme').html('<i class="fas fa-sun"></i> Light Theme</strong>');
+                        $('#theme').attr('id','light');
+                        
+                  }
+      });
+</script>
 </body>
 </html>

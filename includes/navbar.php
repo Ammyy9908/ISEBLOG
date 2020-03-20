@@ -23,8 +23,8 @@
       <a class="navbar-item" href="blogs/">
                   Geek Post
       </a>
-      <a class="navbar-item">
-        Contact
+      <a class="navbar-item" href="feedback/">
+        Blog Feedback
       </a>
     </div>
 <?php
@@ -35,6 +35,9 @@
      <div class="buttons">
        <a class="button" style="background-color: #6C63FF;color:#ffffff;border:none;" href="Auth/">
          <strong>Member Login</strong>
+</a>
+<a class="button" style="background-color: #262626;color:#ffffff;border:none;" id="theme">
+         
 </a>
      </div>
    </div>
@@ -49,8 +52,8 @@
      <div class="buttons">
        
 
-<a class="button" style="background-color: #6C63FF;color:#ffffff;border:none;" href="Blog/Add.php">
-         <strong>';echo $_SESSION['member'];echo'</strong>
+     <a class="button" style="background-color: #262626;color:#ffffff;border:none;" id="theme">
+     
 </a>
 <a class="button is-light" href="Auth/logout.php">
             Logout

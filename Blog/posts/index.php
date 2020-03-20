@@ -12,12 +12,13 @@ ob_start();
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Blogs</title>
       <link rel="stylesheet" href="../../css/bulma.min.css">
-      <link rel="stylesheet" href="../../css/custom.css">
+      <link rel="stylesheet" href="../../css/custom.css" id="styles">
       <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 <body>
 <!--top-header-->
-<div class="hero is-large" style="background-color:#fff;">
+
+<div class="hero is-large" style="background-color:transparent;">
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="../">
@@ -72,6 +73,8 @@ mysqli_query($conn,$sql);
           <p class="subtitle" style="color:#ccc;">';echo $row['dates'];echo'</p>
           <h1 class="title">';echo $row['title'];echo'
           <p class="subtitle is-size-3">';echo $row['descriptions'];echo'</p>
+          <!-- Go to www.addthis.com/dashboard to customize your tools -->
+         <div class="addthis_inline_share_toolbox"></div>
           ';
           }}
         else
@@ -99,7 +102,33 @@ mysqli_query($conn,$sql);
       
 </div>
 
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-588e9cccbbeee2c6"></script>
 
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script>
+      $(document).ready(function()
+      {
+//check theme onload
+var theme=localStorage.getItem('theme');
+                  if(theme==null || theme=='' || theme=='light')
+                  {
+                        $('#styles').attr('href','../../css/custom.css'); 
+                        
+            
+                  }
+                  else
+                  {
+                        $('#styles').attr('href','../../css/custom2.css');
+                        $('#theme').css('background-color','#ffffff');   
+                        $('#theme').css('color','#000000'); 
+                        $('#theme').html('<i class="fas fa-sun"></i> Light Theme</strong>');
+                        $('#theme').attr('id','light');
+                        
+                  }
+      });
+</script>
 
 </body>
 </html>

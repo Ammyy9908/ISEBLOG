@@ -80,7 +80,7 @@ else
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	  rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-    <link rel="stylesheet" type="text/css" href="css/custom.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/custom.css"/ id="styles">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 <body>
@@ -94,15 +94,15 @@ else
   
   </div>
 </nav>
-<section class="hero is-fullheight" style="background-color: #ccc;">
 <?php if(isset($_GET['error']))
 {
+      echo '<div class="notification is-danger">
+      <button class="delete"></button>
+      ';echo $_GET['error'];echo'
+    </div>';
+}?>
+<section class="hero is-fullheight" style="background-color: transparent;">
 
-    echo '<div class="notification is-danger">
-    <button class="delete"></button>';echo $_GET['error'];echo'
-  </div>';
-}
-?>
  
 
   <!-- Hero content: will be in the middle -->
@@ -149,6 +149,44 @@ else
   
   
 </section>
+
+
+<script>
+      document.addEventListener('DOMContentLoaded', () => {
+  (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+    $notification = $delete.parentNode;
+
+    $delete.addEventListener('click', () => {
+      $notification.parentNode.removeChild($notification);
+    });
+  });
+});
+</script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script>
+      $(document).ready(function()
+      {
+//check theme onload
+var theme=localStorage.getItem('theme');
+                  if(theme==null || theme=='' || theme=='light')
+                  {
+                        $('#styles').attr('href','../css/custom.css'); 
+                        
+            
+                  }
+                  else
+                  {
+                        $('#styles').attr('href','../css/custom2.css');
+                        $('#theme').css('background-color','#ffffff');   
+                        $('#theme').css('color','#000000'); 
+                        $('#theme').html('<i class="fas fa-sun"></i> Light Theme</strong>');
+                        $('#theme').attr('id','light');
+                        
+                  }
+      });
+</script>
 	
 </body>
 </html>

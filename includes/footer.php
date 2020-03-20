@@ -1,4 +1,4 @@
-<div class="hero is-primary is-danger">
+<div class="hero" id="footer">
 
         <div class="hero-body">
                 <div class="columns has-text-centered" style="margin: 50px auto;padding: 10px;">

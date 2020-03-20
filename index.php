@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>ISE-Blog</title>
       <link rel="stylesheet" href="css/bulma.min.css">
-      <link rel="stylesheet" href="css/custom.css">
+      <link rel="stylesheet" href="css/custom.css" id="styles">
       <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 <body>
@@ -69,6 +69,9 @@ if ($navbarBurgers.length > 0) {
 </script>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-588e9cccbbeee2c6"></script>
+
 <script>
       $(document).ready(function()
       {
@@ -111,6 +114,51 @@ if ($navbarBurgers.length > 0) {
                         
                         
             });
+
+
+
+            //Theme implementation
+            //check theme onload
+            var theme=localStorage.getItem('theme');
+                  if(theme==null || theme=='' || theme=='light')
+                  {
+                        $('#styles').attr('href','css/custom.css');
+                         
+                        $('#theme').html('<strong><i class="fas fa-moon"></i> Dark Theme</strong>');
+                        $('#hero').addClass('is-warning');
+                        $('#footer').addClass('is-warning');
+                        $('#headerI').attr('src','assets/light.svg');
+                        
+            
+                  }
+                  else
+                  {
+                        $('#styles').attr('href','css/custom2.css');
+                        $('#theme').css('background-color','#ffffff');   
+                        $('#theme').css('color','#000000'); 
+                        $('#theme').html('<i class="fas fa-sun"></i> Light Theme</strong>');
+                        $('#theme').attr('id','light');
+                        $('#hero').addClass('is-dark');
+                        $('#footer').addClass('is-dark');
+                        $('#headerI').attr('src','assets/dark.svg');
+                        
+                  }
+            //change theme onclick
+
+            $('#theme').on('click',function()
+            {
+                  
+                localStorage.setItem('theme','dark');
+                location.reload(true);
+            });
+
+            $('#light').on('click',function()
+            {
+                  
+                localStorage.setItem('theme','light');
+                location.reload(true);
+            });
+
       });
 </script>
       
