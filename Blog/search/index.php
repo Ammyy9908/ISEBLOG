@@ -10,13 +10,14 @@ ob_start();
 <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Blogs</title>
+      <title>Blogs Search</title>
       <link rel="stylesheet" href="../../css/bulma.min.css">
       <link rel="stylesheet" href="../../css/custom.css" id="styles">
       <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 <body>
 <!--top-header-->
+
 <div class="hero is-large" style="background-color:transparent;">
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
@@ -29,6 +30,8 @@ ob_start();
 
 <!--blogs-->
 
+
+
 <div class="hero">
       <div class="hero-body">
            
@@ -37,19 +40,21 @@ ob_start();
                   <div class="column">
                         
                   <?php
-                  if(isset($_GET['id']))
+                  if(isset($_GET['key']))
                   {
-                        $keyword = "%{$_GET['id']}%";
-        $id=$_GET['id'];
-      $sql="SELECT seen_count from Articles WHERE id='$id'";
-      $result = mysqli_query($conn,$sql);
-      $row = mysqli_fetch_row($result);
-      $count=$row[0];
-      $count=(int)$count+1;
-      $count=strval($count);
-      $sql="UPDATE Articles SET seen_count='$count' WHERE id='$id'";
-      mysqli_query($conn,$sql);
-        $sql = "SELECT * FROM Articles WHERE id LIKE ?";
+                  
+$id="%{$_GET['key']}%";
+$sql="SELECT seen_count from collegepost WHERE title LIKE '%$id%'";
+$result = mysqli_query($conn,$sql);
+$row = mysqli_fetch_row($result);
+$count=$row[0];
+$count=(int)$count+1;
+$count=strval($count);
+$sql="UPDATE collegepost SET seen_count='$count' title LIKE '%$id%'";
+mysqli_query($conn,$sql);
+
+      $keyword = "%{$_GET['key']}%";
+        $sql = "SELECT * FROM collegepost WHERE title LIKE ?";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt,$sql)) {
         echo "Statement Error!";
@@ -65,9 +70,7 @@ ob_start();
           while($row = mysqli_fetch_assoc($result))
           {
           echo '
-          <figure class="image is-3by1">
           <img src="';echo $row['img_url'];echo'">
-          </figure>
           <h1 class="subtitle">by: ';echo $row['uname'];echo'</h1>
           <p class="subtitle" style="color:#ccc;">';echo $row['dates'];echo'</p>
           <h1 class="title">';echo $row['title'];echo'
@@ -82,22 +85,25 @@ ob_start();
         exit();
         }
         }
-        
                   }
                   else
-        {
-            header('location:../../errors/');
-            exit();     
-        }
+                  {
+                        header('location:../../errors/');
+                        exit();    
+                  }
+
+
         
-                  ?>   
+        ?>   
                   </div>
                         
                         </div>
                   </div>
             </div>
       </div>
+      
 </div>
+
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-588e9cccbbeee2c6"></script>
 
@@ -125,5 +131,6 @@ var theme=localStorage.getItem('theme');
                   }
       });
 </script>
+
 </body>
 </html>

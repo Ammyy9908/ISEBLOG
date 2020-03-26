@@ -13,17 +13,17 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item">
+      <a class="navbar-item has-text-weight-semibold is-active is-size-5">
         Home
       </a>
 
-      <a class="navbar-item" href="Blog/">
+      <a class="navbar-item has-text-weight-semibold is-size-5" href="Blog/">
         Blogs
       </a>
-      <a class="navbar-item" href="blogs/">
+      <a class="navbar-item has-text-weight-semibold is-size-5" href="blogs/">
                   Geek Post
       </a>
-      <a class="navbar-item" href="feedback/">
+      <a class="navbar-item has-text-weight-semibold is-size-5" href="feedback/">
         Blog Feedback
       </a>
     </div>

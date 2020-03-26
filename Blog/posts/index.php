@@ -68,7 +68,9 @@ mysqli_query($conn,$sql);
           while($row = mysqli_fetch_assoc($result))
           {
           echo '
+          <figure class="image is-3by1">
           <img src="';echo $row['img_url'];echo'">
+          </figure>
           <h1 class="subtitle">by: ';echo $row['uname'];echo'</h1>
           <p class="subtitle" style="color:#ccc;">';echo $row['dates'];echo'</p>
           <h1 class="title">';echo $row['title'];echo'

@@ -7,6 +7,7 @@
       <title>ISE-Blog</title>
       <link rel="stylesheet" href="css/bulma.min.css">
       <link rel="stylesheet" href="css/custom.css" id="styles">
+      <!--<link rel="stylesheet" href="css/debugger.css">-->
       <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 <body>
